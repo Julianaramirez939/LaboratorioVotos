@@ -1,0 +1,41 @@
+@startuml
+class LoginController {
+    - Label mensajeLbl
+    - Button ingresarBtn
+    - TextField idTxt
+    - Button salirBtn
+    + void salirBtnOnAction(ActionEvent event)
+    + void ingresarBtnOnAction(ActionEvent event)
+    - boolean verificarID(String id)
+    - void guardarID(String id)
+    - void abrirNuevaVentana()
+}
+
+class VotosController {
+    - Button regresarBtn
+    - Button votar1Btn
+    - Button votar2Btn
+    - Button votar3Btn
+    - Button verVotosBtn
+    - Label jornadaLbl
+    - Stage stageLogin
+    - boolean yaVotado
+    + void initialize()
+    + void votar1BtnOnAction()
+    + void votar2BtnOnAction()
+    + void votar3BtnOnAction()
+    + void verVotosBtnOnAction()
+    + void regresarBtnOnAction()
+    - void procesarVoto(String candidato)
+    - void guardarVoto(String candidato)
+    + void mostrarVotos()
+    - Map<String, Integer> contarVotos()
+    - void mostrarMensaje(String mensaje)
+    - void actualizarJornada()
+    - String obtenerJornadaAleatoria()
+    + void setStageLogin(Stage stage)
+}
+
+LoginController ..> VotosController : "Crea y usa"
+VotosController ..> Stage : "Usa"
+@enduml
